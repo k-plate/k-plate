@@ -2,6 +2,7 @@ package com.doug.kplate.service.impl.recharge;
 
 import com.doug.kplate.dao.recharge.RechargeDao;
 import com.doug.kplate.dto.recharge.RechargeDto;
+import com.doug.kplate.entity.recharge.Recharge;
 import com.doug.kplate.service.recharge.RechargeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,5 +22,10 @@ public class RechargeServiceImpl implements RechargeService {
     @Override
     public int queryTotal(Map<String, Object> map) {
         return this.rechargeDao.selectTotal(map);
+    }
+
+    @Override
+    public Recharge getRechargeById(Long rechargeId) {
+        return this.rechargeDao.selectRechargeById(rechargeId);
     }
 }

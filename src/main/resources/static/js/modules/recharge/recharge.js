@@ -29,24 +29,6 @@ $(function () {
                             }
                         }},
             {label: '操作', name: 'cz', width: 50,formatter:operateFormatter}
-            // {
-            //     label: '状态', name: 'status', width: 25,
-            //     formatter: function (value, options, row) {
-            //         if (value == '1') {
-            //             return "正常";
-            //         }
-            //         else if (value == '0') {
-            //             return "禁用";
-            //         }
-            //         else {
-            //             return "-";
-            //         }
-            //     }
-            // },
-            // {
-            //     label: '管理', name: 'clueId', width: 150, formatter: operateFormatter
-            //
-            // }
         ],
         viewrecords: true,
         height: 385,
@@ -148,23 +130,22 @@ var vm = new Vue({
             vm.showList = false;
             vm.title = "审核";
             vm.flag = 1
-            //获取角色信息
-            this.getRoleList();
+            //获取订单信息
+            this.getRecharge(rechargeId);
+        },
+        getRecharge:function(rechargeId){
+            debugger
+            $.get(baseURL + "recharge/recharge/getRechargeById?rechargeId="+rechargeId,function (r) {
+                debugger
+                vm.recharge=r.recharge;
+                vm.recharge.rechargeCode=r.recharge.rechargeCode;
+                vm.recharge.userid=r.recharge.userId;
+                vm.recharge.username=r.recharge.username;
+
+            });
         },
         saveOrUpdate:function(){
 
-        },
-        getUser: function (userId) {
-            $.get(baseURL + "sys/user/info/" + userId, function (r) {
-                vm.user = r.user;
-                vm.user.status = r.user.status;
-                vm.user.username = r.user.username;
-                vm.user.name = r.user.name;
-                vm.user.mobile = r.user.mobile;
-                vm.user.cleanPassword = r.user.cleanPassword;
-                vm.user.userId = r.user.userId;
-                vm.user.roleId = r.user.roleId;
-            });
         },
         getRoleList: function () {
             $.get(baseURL + "sys/role/select", function (r) {

@@ -33,22 +33,25 @@
 
     </select>
 
-    <select id="selectTotal" resultType="int">
+    <select id="selectTotal" resultType="int" parameterType="java.util.Map">
         select count(*) from recharge
         where 1=1
-        <!--<if test="username != null and username != ''">-->
-            <!--and u.username like concat('%',#{username},'%')-->
-        <!--</if>-->
-        <!--<if test="name != null and name != ''">-->
-            <!--and u.name like concat('%',#{name},'%')-->
-        <!--</if>-->
-        <!--<if test="mobile != null and mobile != ''">-->
-            <!--and u.mobile like concat('%',#{mobile},'%')-->
-        <!--</if>-->
-        <!--<if test="roleId != null">-->
-            <!--and sr.role_id = #{roleId}-->
-        <!--</if>-->
+        <if test="username != null and username != ''">
+            and r.user_name like concat('%',#{username},'%')
+        </if>
+        <if test="starttime != null and starttime != ''">
+            <![CDATA[ and r.create_time >= to_date(#{starttime,jdbcType=TIMESTAMP},'yyyy-MM-dd hh24:mi:ss')]]>
+        </if>
+        <if test="endtime != null and endtime != ''">
+            <![CDATA[ and r.create_time <= to_date(#{endtime,jdbcType=TIMESTAMP},'yyyy-MM-dd hh24:mi:ss')]]>
+        </if>
     </select>
 
+    <select id="selectRechargeById" resultType="com.doug.kplate.entity.recharge.Recharge">
+        select r.* from recharge r where 1=1
+        <if test="rechargeId!=null and rechargeId!=''">
+            and r.id=#{rechargeId}
+        </if>
+    </select>
 
 </mapper>

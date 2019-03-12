@@ -16,4 +16,6 @@ public interface RechargeDao extends BaseDao<Recharge> {
     List<RechargeDto> selectList(Map<String, Object> map);
 
     int selectTotal(Map<String, Object> map);
+
+    Recharge selectRechargeById(Long rechargeId);
 }
