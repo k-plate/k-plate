@@ -47,8 +47,7 @@ public class RechargeController extends AbstractController {
      */
     @RequestMapping("getRechargeById")
     private R getRechargeById(@RequestParam("rechargeId")Long rechargeId){
-        Recharge recharge=new Recharge();
-        recharge=rechargeService.getRechargeById(rechargeId);
+        Recharge recharge=rechargeService.getRechargeById(rechargeId);
         return R.ok().put("recharge",recharge);
     }
     /**

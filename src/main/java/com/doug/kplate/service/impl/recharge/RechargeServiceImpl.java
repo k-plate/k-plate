@@ -26,6 +26,6 @@ public class RechargeServiceImpl implements RechargeService {
 
     @Override
     public Recharge getRechargeById(Long rechargeId) {
-        return this.rechargeDao.selectRechargeById(rechargeId);
+        return rechargeDao.selectRechargeById(rechargeId);
     }
 }

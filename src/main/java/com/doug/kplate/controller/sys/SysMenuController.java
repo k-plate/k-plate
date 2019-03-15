@@ -9,7 +9,7 @@ import com.doug.kplate.service.sys.SysMenuService;
 import com.doug.kplate.utils.Constant;
 import com.doug.kplate.utils.PageUtils;
 import com.doug.kplate.utils.R;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
