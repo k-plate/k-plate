@@ -8,14 +8,9 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @SpringBootApplication
-public class KPlateApplication extends SpringBootServletInitializer {
+public class KPlateApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(KPlateApplication.class, args);
-    }
-
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(KPlateApplication.class);
     }
 }

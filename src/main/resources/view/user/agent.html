@@ -60,31 +60,31 @@
     </div>
 
     <!--新增经纪人-->
-    <div v-show="!showList" class="panel panel-default">
+    <div v-show="addBroker" class="panel panel-default">
         <div class="panel-heading">{{title}}</div>
         <form class="form-horizontal">
             <div class="form-group">
                 <div class="col-sm-2 control-label">账号</div>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" v-model="loginName" placeholder="账号"/>
+                    <input type="text" class="form-control" v-model="agent.loginName" placeholder="账号"/>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-2 control-label">用户密码</div>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" v-model="password" value="123456" readonly/>
+                    <input type="text" class="form-control" v-model="agent.password" value="123456" readonly/>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-2 control-label">用户姓名</div>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" v-model="userName" placeholder="用户姓名"/>
+                    <input type="text" class="form-control" v-model="agent.contactName" placeholder="用户姓名"/>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-2 control-label">手机号</div>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" v-model="mobile" placeholder="手机号"/>
+                    <input type="text" class="form-control" v-model="agent.contactMobile" placeholder="手机号"/>
                 </div>
             </div>
             <div class="form-group">
@@ -97,61 +97,61 @@
 
 
     <!--新增代理商-->
-    <div v-show="!showList" class="panel panel-default">
+    <div v-show="addFactor" class="panel panel-default">
         <div class="panel-heading">{{title}}</div>
         <form class="form-horizontal">
             <div class="form-group">
                 <div class="col-sm-2 control-label">代理商名称</div>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" v-model="agentName" placeholder="代理商名称"/>
+                    <input type="text" class="form-control" v-model="agent.agentName" placeholder="代理商名称"/>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-2 control-label">余额</div>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" v-model="balance" value="0" readonly/>
+                    <input type="text" class="form-control" v-model="agent.balance" value="0" readonly/>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-2 control-label">赠送金额</div>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" v-model="giveBalance" value="0" readonly/>
+                    <input type="text" class="form-control" v-model="agent.giveBalance" value="0" readonly/>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-2 control-label">手机号</div>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" v-model="phone" placeholder="手机号"/>
+                    <input type="text" class="form-control" v-model="agent.contactMobile" placeholder="手机号"/>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-2 control-label">真实姓名</div>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" v-model="name" placeholder="真实姓名"/>
+                    <input type="text" class="form-control" v-model="agent.contactName" placeholder="真实姓名"/>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-2 control-label">备注用户名</div>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" v-model="noteName" placeholder="备注用户名"/>
+                    <input type="text" class="form-control" v-model="agent.noteUserName" placeholder="备注用户名"/>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-2 control-label">红利比例</div>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" v-model="dividends" placeholder="红利比例"/>
+                    <input type="text" class="form-control" v-model="agent.dividends" placeholder="红利比例"/>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-2 control-label">佣金比例</div>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" v-model="commissionRatio" placeholder="佣金比例"/>
+                    <input type="text" class="form-control" v-model="agent.commissionRatio" placeholder="佣金比例"/>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-2 control-label">保证金</div>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" v-model="margin" placeholder="保证金"/>
+                    <input type="text" class="form-control" v-model="agent.margin" placeholder="保证金"/>
                 </div>
                 <div class="col-sm-10">
                     <span>说明：</span>
@@ -161,13 +161,13 @@
             <div class="form-group">
                 <div class="col-sm-2 control-label">密码</div>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" v-model="agentPassword" placeholder="密码"/>
+                    <input type="text" class="form-control" v-model="agent.password" placeholder="密码"/>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-2 control-label">确认密码</div>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" v-model="agentConfigPassword" placeholder="确认密码"/>
+                    <input type="text" class="form-control" v-model="agent.configPassword" placeholder="确认密码"/>
                 </div>
             </div>
             <div class="form-group">
@@ -180,7 +180,7 @@
 
 
     <!--新增客户-->
-    <div v-show="!showList" class="panel panel-default">
+    <div v-show="addCustomer" class="panel panel-default">
         <div class="panel-heading">{{title}}</div>
         <form class="form-horizontal">
             <div class="form-group">
@@ -192,19 +192,19 @@
             <div class="form-group">
                 <div class="col-sm-2 control-label">手机号</div>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" v-model="mobile" placeholder="手机号"/>
+                    <input type="text" class="form-control" v-model="agent.contactMobile" placeholder="手机号"/>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-2 control-label">真实姓名</div>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" v-model="name" placeholder="真实姓名"/>
+                    <input type="text" class="form-control" v-model="agent.contactName" placeholder="真实姓名"/>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-2 control-label">备注用户名</div>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" v-model="noteName" placeholder="备注用户名"/>
+                    <input type="text" class="form-control" v-model="agent.noteUserName" placeholder="备注用户名"/>
                 </div>
             </div>
             <div class="form-group">
@@ -216,13 +216,13 @@
             <div class="form-group">
                 <div class="col-sm-2 control-label">密码</div>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" v-model="password" placeholder="密码"/>
+                    <input type="text" class="form-control" v-model="agent.password" placeholder="密码"/>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-2 control-label">确认密码</div>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" v-model="configPassword" placeholder="确认密码"/>
+                    <input type="text" class="form-control" v-model="agent.configPassword" placeholder="确认密码"/>
                 </div>
             </div>
             <div class="form-group">

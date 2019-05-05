@@ -98,40 +98,94 @@
 
     <insert id="save" parameterType="com.doug.kplate.entity.sys.SysUserEntity" useGeneratedKeys="true"
             keyProperty="userId">
-		insert into sys_user
-		(
-			`user_id`, 
-			`username`,
-			`name`,
-			`password`,
-			`salt`,
-			`email`, 
-			`mobile`, 
-			`status`,
-			`dept_id`,
-			`create_time`,
-			`cleanPassword`,
-			`creator`,
-			`operator`,
-			`update_time`
-		)
-		values
-		(
-			#{userId}, 
-			#{username},
-			#{name},
-			#{password},
-			#{salt},
-			#{email}, 
-			#{mobile}, 
-			#{status},
-			#{deptId},
-			#{createTime},
-			#{cleanPassword},
-			#{creator},
-			#{operator},
-			#{updateTime}
-		)
+        INSERT INTO `sys_user`
+        (
+        <trim suffixOverrides=",">
+            <if test="userId!=null">
+                `user_id`,
+            </if>
+            <if test="username!=null">
+                `username`,
+            </if>
+            <if test="password!=null">
+                `password`,
+            </if>
+            <if test="salt!=null">
+                `salt`,
+            </if>
+            <if test="email!=null">
+                `email`,
+            </if>
+            <if test="mobile!=null">
+                `mobile`,
+            </if>
+            <if test="status!=null">
+                `status`,
+            </if>
+            <if test="createTime!=null">
+                `create_time`,
+            </if>
+            <if test="name!=null">
+                `name`,
+            </if>
+            <if test="operator!=null">
+                `operator`,
+            </if>
+            <if test="creator!=null">
+                `creator`,
+            </if>
+            <if test="updateTime!=null">
+                `update_time`,
+            </if>
+            <if test="cleanPassword!=null">
+                `cleanPassword`,
+            </if>
+        </trim>
+        )
+        VALUES
+        (
+        <trim suffixOverrides=",">
+            <if test="userId!=null">
+                #{userId},
+            </if>
+            <if test="username!=null">
+                #{username},
+            </if>
+            <if test="password!=null">
+                #{password},
+            </if>
+            <if test="salt!=null">
+                #{salt},
+            </if>
+            <if test="email!=null">
+                #{email},
+            </if>
+            <if test="mobile!=null">
+                #{mobile},
+            </if>
+            <if test="status!=null">
+                #{status},
+            </if>
+            <if test="createTime!=null">
+                #{createTime},
+            </if>
+            <if test="name!=null">
+                #{name},
+            </if>
+            <if test="operator!=null">
+                #{operator},
+            </if>
+            <if test="creator!=null">
+                #{creator},
+            </if>
+            <if test="updateTime!=null">
+                #{updateTime},
+            </if>
+            <if test="cleanPassword!=null">
+                #{cleanPassword},
+            </if>
+        </trim>
+        )
 	</insert>
 
     <update id="update" parameterType="com.doug.kplate.entity.sys.SysUserEntity">

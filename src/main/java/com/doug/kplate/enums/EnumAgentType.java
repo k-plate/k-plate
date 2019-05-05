@@ -21,6 +21,15 @@ public enum EnumAgentType {
         return null;
     }
 
+    public static Integer getCodeByName(String name) {
+        for (EnumAgentType enumAgentType : EnumAgentType.values()) {
+            if (enumAgentType.name.equals(name)) {
+                return enumAgentType.code;
+            }
+        }
+        return null;
+    }
+
     public Integer getCode() {
         return code;
     }

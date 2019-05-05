@@ -6,7 +6,7 @@ $(function () {
             {label: '编号', name: 'id', width: 45, key: true},
             {label: '客户信息', name: 'agentCode', width: 60},
             {label: '真实姓名', name: 'contactName', width: 45},
-            {label: '创建日期', name: 'createtim', width: 75},
+            {label: '创建日期', name: 'createtime', width: 75},
             {label: '最近登录', name: 'lastLoginTime', width: 75},
             {label: '订单数', name: 'orderCount', width: 30},
             {label: '账户余额', name: 'balance', width: 45},
@@ -51,17 +51,26 @@ var vm = new Vue({
             endTime: null,
             title: null,
         },
+        flag: 0,
+        agent: {},
         title: "新增",
-        showList: true
+        showList: true,
+        addBroker: false,
+        addFactor: false,
+        addCustomer: false
     },
     methods: {
         query: function () {
             vm.reload();
         },
         reload: function () {
+            $(":input").val("");
             $(":input").attr("readonly", false);
             $("select").attr("disabled", false);
             vm.showList = true;
+            vm.addBroker = false;
+            vm.addFactor = false;
+            vm.addCustomer = false;
             var page = $("#jqGrid").jqGrid('getGridParam', 'page');
             $("#jqGrid").jqGrid('setGridParam', {
                 postData: vm.q,
@@ -70,18 +79,27 @@ var vm = new Vue({
         },
         selectAll: function (number) {
             if (number == 0) {
+                vm.q.type = null;
+                vm.q.startTime = null;
+                vm.q.endTime = null;
                 vm.reload();
             }
             if (number == 1) {
                 vm.q.type = 1;
+                vm.q.startTime = null;
+                vm.q.endTime = null;
                 vm.reload();
             }
             if (number == 2) {
                 vm.q.type = 2;
+                vm.q.startTime = null;
+                vm.q.endTime = null;
                 vm.reload();
             }
             if (number == 3) {
                 vm.q.type = 3;
+                vm.q.startTime = null;
+                vm.q.endTime = null;
                 vm.reload();
             }
             if (number == 4) {
@@ -104,19 +122,52 @@ var vm = new Vue({
             }
         },
         add: function (number) {
-
-        }
+            vm.showList = false;
+            if (number == 0) {
+                vm.addBroker = true;
+                vm.title = '新增经纪人';
+                vm.agent.roleName = '经纪人';
+                vm.agent.password = '123456';
+            }
+            if (number == 1) {
+                vm.addFactor = true;
+                vm.title = '新增代理商';
+                vm.agent.roleName = '代理商';
+            }
+            if (number == 2) {
+                vm.addCustomer = true;
+                vm.title = '新增客户';
+                vm.agent.roleName = '客户';
+            }
+        },
+        saveOrUpdate: function () {
+            $.ajax({
+                type: "POST",
+                url: baseURL + "user/agent/add",
+                contentType: "application/json",
+                data: JSON.stringify(vm.agent),
+                success: function (r) {
+                    if (r.code == 0) {
+                        alert('保存成功', function () {
+                            vm.reload();
+                        });
+                    } else {
+                        alert(r.msg);
+                    }
+                }
+            });
+        },
     }
 });
 
 function getStartTime() {
     var date = new Date();
-    var str = date.getFullYear() + "-" + date.getMonth() + 1 + "-" + date.getDate() + " " + "00:00:00";
+    var str = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " + "00:00:00";
     return str;
 }
 
 function getEndTime() {
     var date = new Date();
-    var str = date.getFullYear() + "-" + date.getMonth() + 1 + "-" + date.getDate() + " " + "23:59:59";
+    var str = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " + "23:59:59";
     return str;
 }

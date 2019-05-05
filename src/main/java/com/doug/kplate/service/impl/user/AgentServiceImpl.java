@@ -35,4 +35,9 @@ public class AgentServiceImpl extends ServiceImpl<AgentDao, Agent> implements Ag
     public Integer queryCount(Map<String, Object> param) {
         return agentDao.getAgentCount(param);
     }
+
+    @Override
+    public Integer save(Agent agent) {
+        return agentDao.insertAgent(agent);
+    }
 }

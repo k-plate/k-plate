@@ -15,4 +15,6 @@ public interface AgentDao extends BaseMapper<Agent> {
     List<Agent> getAgentAll(@Param("param") Map<String, Object> param);
 
     Integer getAgentCount(@Param("param") Map<String, Object> param);
+
+    Integer insertAgent(Agent agent);
 }

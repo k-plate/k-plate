@@ -12,4 +12,6 @@ public interface AgentService extends IService<Agent> {
     List<AgentDto> queryAll(Map<String, Object> param);
 
     Integer queryCount(Map<String, Object> param);
+
+    Integer save(Agent agent);
 }

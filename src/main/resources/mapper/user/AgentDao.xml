@@ -21,6 +21,126 @@
         <result column="recommend_code" jdbcType="VARCHAR" property="recommendCode"/>
         <result column="be_recommend_code" jdbcType="VARCHAR" property="beRecommendCode"/>
     </resultMap>
+    <insert id="insertAgent" parameterType="com.doug.kplate.entity.user.Agent">
+        INSERT INTO `agent`
+        (
+        <trim suffixOverrides=",">
+            <if test="id!=null">
+                `id`,
+            </if>
+            <if test="agentCode!=null">
+                `agent_code`,
+            </if>
+            <if test="agentName!=null">
+                `agent_name`,
+            </if>
+            <if test="agentType!=null">
+                `agent_type`,
+            </if>
+            <if test="userId!=null">
+                `user_id`,
+            </if>
+            <if test="roleId!=null">
+                `role_id`,
+            </if>
+            <if test="contactName!=null">
+                `contact_name`,
+            </if>
+            <if test="contactMobile!=null">
+                `contact_mobile`,
+            </if>
+            <if test="noteUserName!=null">
+                `note_user_name`,
+            </if>
+            <if test="dividends!=null">
+                `dividends`,
+            </if>
+            <if test="commissionRatio!=null">
+                `commission_ratio`,
+            </if>
+            <if test="margin!=null">
+                `margin`,
+            </if>
+            <if test="balance!=null">
+                `balance`,
+            </if>
+            <if test="givingMoney!=null">
+                `giving_money`,
+            </if>
+            <if test="createtime!=null">
+                `createtime`,
+            </if>
+            <if test="updatetime!=null">
+                `updatetime`,
+            </if>
+            <if test="recommendCode!=null">
+                `recommend_code`,
+            </if>
+            <if test="beRecommendCode!=null">
+                `be_recommend_code`,
+            </if>
+        </trim>
+        )
+        VALUES
+        (
+        <trim suffixOverrides=",">
+            <if test="id!=null">
+                #{id},
+            </if>
+            <if test="agentCode!=null">
+                #{agentCode},
+            </if>
+            <if test="agentName!=null">
+                #{agentName},
+            </if>
+            <if test="agentType!=null">
+                #{agentType},
+            </if>
+            <if test="userId!=null">
+                #{userId},
+            </if>
+            <if test="roleId!=null">
+                #{roleId},
+            </if>
+            <if test="contactName!=null">
+                #{contactName},
+            </if>
+            <if test="contactMobile!=null">
+                #{contactMobile},
+            </if>
+            <if test="noteUserName!=null">
+                #{noteUserName},
+            </if>
+            <if test="dividends!=null">
+                #{dividends},
+            </if>
+            <if test="commissionRatio!=null">
+                #{commissionRatio},
+            </if>
+            <if test="margin!=null">
+                #{margin},
+            </if>
+            <if test="balance!=null">
+                #{balance},
+            </if>
+            <if test="givingMoney!=null">
+                #{givingMoney},
+            </if>
+            <if test="createtime!=null">
+                #{createtime},
+            </if>
+            <if test="updatetime!=null">
+                #{updatetime},
+            </if>
+            <if test="recommendCode!=null">
+                #{recommendCode},
+            </if>
+            <if test="beRecommendCode!=null">
+                #{beRecommendCode},
+            </if>
+        </trim>
+        )
+    </insert>
 
     <select id="getAgentAll" resultType="com.doug.kplate.entity.user.Agent">
         select * from agent
@@ -51,7 +171,7 @@
             or contact_mobile like concat('%',#{param.title},'%')
         </if>
         <if test="param.startTime != null and param.startTime != '' and param.endTime != null and param.endTime != ''">
-            and createtime between #{param.startTime} and #{param.startTime}
+            and createtime between #{param.startTime} and #{param.endTime}
         </if>
     </sql>
 </mapper>
