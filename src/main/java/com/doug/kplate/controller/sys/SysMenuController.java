@@ -29,6 +29,7 @@ public class SysMenuController extends AbstractController {
     @Autowired
     private ShiroService shiroService;
 
+
     /**
      * 导航菜单
      */
